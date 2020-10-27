@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 import { combineReducers, createStore } from "redux";
 
-export type Todo = { id: string; content: string };
+export type Todo = { id: string; content: string; completed: boolean };
 
 const todoListSlice = createSlice({
   name: "todoList",
@@ -15,13 +15,21 @@ const todoListSlice = createSlice({
     addTodo(state, action: PayloadAction<string>) {
       state.todoList = [
         ...state.todoList,
-        { id: nanoid(), content: action.payload }
+        { id: nanoid(), content: action.payload, completed: false }
       ];
     },
     removeTodo(state, action: PayloadAction<string>) {
       state.todoList = state.todoList.filter(
         (todo) => todo.id !== action.payload
       );
+    },
+    complete(state, action: PayloadAction<string>) {
+      state.todoList = state.todoList.map((e) => {
+        if (e.id === action.payload) {
+          e.completed = true;
+        }
+        return e;
+      });
     }
   }
 });
