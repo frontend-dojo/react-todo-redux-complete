@@ -1,4 +1,9 @@
-import React, { ChangeEvent, useCallback, useState, FC } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useState,
+  FC,
+} from "react";
 import { useDispatch } from "react-redux";
 import { actions } from "./store";
 
@@ -22,7 +27,11 @@ const NewTodo: FC = () => {
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <input type="text" value={input} onChange={onChangeInput} />
+        <input
+          type="text"
+          value={input}
+          onChange={onChangeInput}
+        />
         <button type="submit">追加</button>
       </div>
     </form>

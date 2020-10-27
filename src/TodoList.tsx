@@ -23,9 +23,7 @@ const TodoListItem: FC<{ todo: Todo }> = (props) => {
 };
 
 const TodoList: FC = () => {
-  const todoList = useSelector<RootState, Todo[]>(
-    (state) => state.todoList.todoList
-  );
+  const todoList = useSelector<RootState, Todo[]>((state) => state.todoList);
   return (
     <ul>
       {todoList.map((todo) => (
